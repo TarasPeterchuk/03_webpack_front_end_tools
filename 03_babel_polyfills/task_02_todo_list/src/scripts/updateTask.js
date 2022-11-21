@@ -25,18 +25,4 @@ export const onToggleTask = event => {
       setItem('tasksList', newTasksList);
       renderTasks();
     });
-
-  // const newTasksList = tasksList.map(task => {
-  //   if (task.id === event.target.dataset.id) {
-  //     const done = event.target.checked;
-  //     return {
-  //       ...task,
-  //       done,
-  //       finishDate: done ? new Date().toISOString() : null,
-  //     };
-  //   }
-  //   return task;
-  // });
-  // setItem('tasksList', newTasksList);
-  // renderTasks();
 };

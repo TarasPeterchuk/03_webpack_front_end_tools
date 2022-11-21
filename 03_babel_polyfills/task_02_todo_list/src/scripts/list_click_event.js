@@ -1,6 +1,3 @@
-// import { renderTasks } from './render.js';
-// import { getItem, setItem } from './storage.js';
-// import { deleteTask, getTasksList } from './tasksGateway.js';
 import { onToggleTask } from './updateTask.js';
 import { onDeleteTask } from './deleteTask.js';
 

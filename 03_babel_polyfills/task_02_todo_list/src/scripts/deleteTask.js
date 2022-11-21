@@ -8,16 +8,6 @@ export const onDeleteTask = event => {
     return;
   }
   const taskId = event.target.dataset.id;
-  const tasksList = getItem('tasksList');
-  // const { text, createDate } = tasksList.find(task => task.id === taskId);
-  // const done = event.target.checked;
-
-  // const updatedTask = {
-  //   text,
-  //   createDate,
-  //   done,
-  //   finishDate: done ? new Date().toISOString() : null,
-  // };
 
   deleteTask(taskId)
     .then(() => getTasksList())
