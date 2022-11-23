@@ -2,7 +2,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = (env, argv) => {
-  const isProduction = argv.mode === 'prodiction';
+  console.log(argv);
+  const isProduction = argv.mode === 'production';
   const config = {
     entry: './src/index.js',
     output: {
