@@ -1,15 +1,22 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = (env, argv) => {
   const isProduction = argv.mode === 'production';
   const config = {
     entry: './src/index.js',
     output: {
+      clean: true,
       filename: 'bundle.js',
     },
     module: {
       rules: [
+        {
+          test: /.js$/,
+          use: ['babel-loader'],
+        },
         {
           test: /.s?css$/,
           use: [
@@ -19,13 +26,13 @@ module.exports = (env, argv) => {
           ],
         },
         {
-          test: /.(jpg|png|gif)$/i,
+          test: /.(jpg|png)$/,
           use: [
             {
               loader: 'url-loader',
               options: {
                 limit: 8192,
-                // name: '[name].[ext]',
+                name: '[name].[ext]',
                 outputPath: 'images',
               },
             },
@@ -34,8 +41,13 @@ module.exports = (env, argv) => {
       ],
     },
     plugins: [
+      new webpack.ProgressPlugin(),
+      new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
         template: './src/index.html',
+      }),
+      new MiniCssExtractPlugin({
+        filename: '[name].css',
       }),
     ],
     devServer: {
